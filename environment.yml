@@ -15,7 +15,7 @@ dependencies:
   - jupyter_server==2.16.0
   - jupyterlab-git==0.51.2
   - jupyterlab_rise==0.43.1
-  - jupytext==1.16.6
+  - jupytext==1.16.7
   - nbgitpuller==1.2.2
   - notebook==7.4.5
   - python==3.11.*
