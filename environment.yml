@@ -56,3 +56,8 @@ dependencies:
     - jupysql==0.10.15
     - nbconvert[webpdf]==7.16.6
     - otter-grader==6.1.3
+
+    # AI/ML
+    - gpt4all==2.8.2
+    - openai==2.6.1
+    - gradio==5.49.1
