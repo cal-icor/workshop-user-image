@@ -43,6 +43,11 @@ dependencies:
   - statsmodels==0.14.4
   - sympy==1.14.0
 
+  # AI/ML
+  - gpt4all==2.8.2
+  - openai==2.6.1
+  - gradio==5.49.1
+
   # pip installed packages, conda is preferred
   - pip:
     # useful for debugging python package issues
