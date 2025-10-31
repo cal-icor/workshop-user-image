@@ -61,3 +61,5 @@ dependencies:
     - gpt4all==2.8.2
     - openai==2.6.1
     - gradio==5.49.1
+    - anthropic==0.72.0
+    - dotenv==0.9.9
