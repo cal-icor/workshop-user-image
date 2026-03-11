@@ -23,8 +23,6 @@ for x in \
   ms-python.python \
   quarto.quarto \
   ms-vscode.live-server \
-  posit.shiny \
-  reditorsupport.r \
   ; do
     code-server --extensions-dir ${VSCODE_EXTENSIONS} --install-extension $x
 done
