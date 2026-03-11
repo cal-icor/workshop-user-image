@@ -11,6 +11,9 @@ COPY --chown=${NB_USER}:${NB_USER} environment.yml /tmp/environment.yml
 RUN mamba env update -n notebook -f /tmp/environment.yml && \
     mamba clean -afy && rm -rf /tmp/environment.yml
 
+COPY --chown=${NB_USER}:${NB_USER} postBuild /tmp/postBuild
+RUN chmod +x /tmp/postBuild && /tmp/postBuild && rm -rf /tmp/postBuild
+
 # ------------------------------------------------------------
 # Cleanup
 # ------------------------------------------------------------
