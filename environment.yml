@@ -22,5 +22,6 @@ dependencies:
     - anthropic==0.83.0
     - python-dotenv==1.2.1
     - jupyter-ai[all]==2.31.7
+    - jupyter-ai-magics==2.31.7
     - transformers==5.2.0
     - langchain==0.3.27
