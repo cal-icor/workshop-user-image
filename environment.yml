@@ -25,3 +25,7 @@ dependencies:
     - jupyter-ai-magics==2.31.7
     - transformers==5.2.0
     - langchain==0.3.27
+
+    - stop-words==2025.11.4
+    - google-genai==1.60.0
+    - polars[all]==1.39.0
