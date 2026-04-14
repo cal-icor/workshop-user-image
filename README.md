@@ -24,4 +24,17 @@ jupyter-repo2docker --user-id=1000 --user-name=jovyan \
   . # <--- the path to the repo
 ```
 
+If you hit `OMP: Error #13` / `kmp_affinity.cpp` when running on Apple Silicon (especially on low-memory or resource-constrained machines), run with conservative OpenMP settings:
+
+``` bash
+jupyter-repo2docker --user-id=1000 --user-name=jovyan \
+  --Repo2Docker.platform=linux/amd64 \
+  --target-repo-dir=/home/jovyan/.cache \
+  -e PLAYWRIGHT_BROWSERS_PATH=/srv/conda \
+  -e KMP_AFFINITY=disabled \
+  -e OMP_NUM_THREADS=1 \
+  -e KMP_INIT_AT_FORK=FALSE \
+  . 
+```
+
 If you just want to see if the image builds, but not automatically launch the server, add `--no-run` to the arguments (before the final `.`).
