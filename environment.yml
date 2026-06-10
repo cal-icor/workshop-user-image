@@ -6,7 +6,7 @@ channels:
 
 dependencies:
   # data science
-  - huggingface_hub==1.4.1
+  - huggingface_hub==1.18.0
   - llama-cpp-python==0.3.16
   - openpyxl==3.1.5
 
