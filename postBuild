@@ -1,23 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# installing chromium browser to enable webpdf conversion using nbconvert
-export PLAYWRIGHT_BROWSERS_PATH=${CONDA_DIR}
-playwright install chromium
+# add additional steps here if needed
 
-# https://github.com/berkeley-dsep-infra/datahub/issues/5827
-git config --system pull.rebase false
-
-# code-server's conda package assets are installed in share/code-server.
-export VSCODE_EXTENSIONS=${CONDA_DIR}/envs/notebook/share/code-server/extensions
-mkdir -p ${VSCODE_EXTENSIONS}
-
-# This is not reproducible, and it can be difficult to version these.
-for x in \
-  ms-toolsai.jupyter \
-  ms-python.python \
-  quarto.quarto \
-  ms-vscode.live-server \
-  ; do
-    code-server --extensions-dir ${VSCODE_EXTENSIONS} --install-extension $x
-done
