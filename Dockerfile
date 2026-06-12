@@ -1,4 +1,4 @@
-FROM us-central1-docker.pkg.dev/cal-icor-hubs/user-images/base-python-image:f7d253b593ff
+FROM us-central1-docker.pkg.dev/cal-icor-hubs/user-images/base-python-image:9c2fd4b59d24
 
 # ------------------------------------------------------------
 # Conda / Python packages
