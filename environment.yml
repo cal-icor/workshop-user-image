@@ -29,3 +29,5 @@ dependencies:
     - stop-words==2025.11.4
     - google-genai==1.60.0
     - polars[all]==1.39.0
+
+    - jupytutor==0.4.0
