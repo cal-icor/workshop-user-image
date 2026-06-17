@@ -2,4 +2,9 @@
 set -euo pipefail
 
 # add additional steps here if needed
+PREFIX=/srv/conda/envs/notebook
+OPENCODE_VERSION=v1.17.7
+# hardcode env for Dockerfile
+PLATFORM="linux-x64"
 
+curl -s -L https://github.com/anomalyco/opencode/releases/download/${OPENCODE_VERSION}/opencode-${PLATFORM}.tar.gz | tar -xzv -C "${PREFIX}/bin"
