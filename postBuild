@@ -8,3 +8,5 @@ OPENCODE_VERSION=v1.17.7
 PLATFORM="linux-x64"
 
 curl -s -L https://github.com/anomalyco/opencode/releases/download/${OPENCODE_VERSION}/opencode-${PLATFORM}.tar.gz | tar -xzv -C "${PREFIX}/bin"
+curl -fsSL https://gh.io/copilot-install | bash
+curl -fsSL https://claude.ai/install.sh | bash
