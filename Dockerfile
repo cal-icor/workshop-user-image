@@ -5,7 +5,6 @@ FROM us-central1-docker.pkg.dev/cal-icor-hubs/user-images/base-python-image:e968
 # ------------------------------------------------------------
 # Copy environment.yml for additional packages
 USER ${NB_USER}
-
 COPY --chown=${NB_USER}:${NB_USER} environment.yml /tmp/environment.yml
 
 # Update existing /srv/conda/notebook environment with new packages
