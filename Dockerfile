@@ -1,4 +1,6 @@
-FROM us-central1-docker.pkg.dev/cal-icor-hubs/user-images/base-python-image:3fea6b426f5b
+FROM us-central1-docker.pkg.dev/cal-icor-hubs/user-images/base-python-image:aa924984d219
+
+ENV NB_USER=jovyan
 
 # ------------------------------------------------------------
 # Conda / Python packages
@@ -10,11 +12,6 @@ COPY --chown=${NB_USER}:${NB_USER} environment.yml /tmp/environment.yml
 # Update existing /srv/conda/notebook environment with new packages
 RUN mamba env update -n notebook -f /tmp/environment.yml && \
     mamba clean -afy && rm -rf /tmp/environment.yml
-
-# overrides.json is a file that jupyterlab reads to determine some settings
-# 1) remove the 'create shareable link' option from the filebrowser context menu
-RUN install -d -o ${NB_USER} -g ${NB_USER} ${CONDA_DIR}/share/jupyter/lab/settings
-COPY --chown=${NB_USER}:${NB_USER} overrides.json ${CONDA_DIR}/share/jupyter/lab/settings
 
 COPY --chown=${NB_USER}:${NB_USER} postBuild /tmp/postBuild
 RUN chmod +x /tmp/postBuild && /tmp/postBuild && rm -rf /tmp/postBuild
@@ -30,9 +27,17 @@ ENV REPO_DIR=/srv/repo
 RUN install -d -o ${NB_USER} -g ${NB_USER} ${REPO_DIR}
 COPY --chown=${NB_USER}:${NB_USER} . ${REPO_DIR}
 
+# Add start script
+RUN chmod +x "${REPO_DIR}/start"
+ENV R2D_ENTRYPOINT="${REPO_DIR}/start"
+# Add entrypoint
+ENV PYTHONUNBUFFERED=1
+
 USER ${NB_USER}
 WORKDIR /home/${NB_USER}
 
 EXPOSE 8888
 
-ENTRYPOINT ["tini", "--"]
+ENTRYPOINT ["/usr/local/bin/repo2docker-entrypoint"]
+
+#ENTRYPOINT ["tini", "--"]
