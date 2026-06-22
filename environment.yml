@@ -8,6 +8,7 @@ dependencies:
   # data science
   - huggingface_hub==1.4.1
   - llama-cpp-python==0.3.16
+  - ipywidgets==8.1.8
 
   # pip installed packages, conda is preferred
   - pip:
@@ -26,4 +27,4 @@ dependencies:
     - google-genai==1.60.0
     - polars[all]==1.39.0
 
-    - jupytutor==0.4.0
+    - jupytutor==0.4.1
