@@ -1,5 +1,7 @@
 FROM us-central1-docker.pkg.dev/cal-icor-hubs/user-images/base-python-image:aa924984d219
 
+ENV NB_USER=jovyan
+
 # ------------------------------------------------------------
 # Conda / Python packages
 # ------------------------------------------------------------
@@ -25,9 +27,17 @@ ENV REPO_DIR=/srv/repo
 RUN install -d -o ${NB_USER} -g ${NB_USER} ${REPO_DIR}
 COPY --chown=${NB_USER}:${NB_USER} . ${REPO_DIR}
 
+# Add start script
+RUN chmod +x "${REPO_DIR}/start"
+ENV R2D_ENTRYPOINT="${REPO_DIR}/start"
+# Add entrypoint
+ENV PYTHONUNBUFFERED=1
+
 USER ${NB_USER}
 WORKDIR /home/${NB_USER}
 
 EXPOSE 8888
 
-ENTRYPOINT ["tini", "--"]
+ENTRYPOINT ["/usr/local/bin/repo2docker-entrypoint"]
+
+#ENTRYPOINT ["tini", "--"]
