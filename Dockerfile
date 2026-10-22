@@ -1,4 +1,4 @@
-FROM us-central1-docker.pkg.dev/cal-icor-hubs/user-images/base-python-image:d75bc2e30f96
+FROM us-central1-docker.pkg.dev/cal-icor-hubs/user-images/base-python-image:0260dc2d94f4
 
 ENV NB_USER=jovyan
 
